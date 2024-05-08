@@ -19,7 +19,7 @@ def search_keywords(content, keywords):
     found_keywords = [kw for kw in keywords if kw.lower() in content.lower()]
     return found_keywords
 
-def crawl_site(start_url, keywords, max_links=2):
+def crawl_site(start_url, keywords, max_links=100):
     visited = set()
     site_alerts = []
 
