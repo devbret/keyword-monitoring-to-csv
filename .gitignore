@@ -1,4 +1,2 @@
-*.csv
+venv/
 /csv-files/*.csv
-*.pyc
-__pycache__/
