@@ -8,11 +8,7 @@ from datetime import datetime
 import os
 
 KEYWORDS = ["data breach", "cyber attack", "ransomware", "zero-day", "APT"]
-WEBSITES = [
-    "https://www.exampleone.com/",
-    "https://www.exampletwo.com/",
-    "https://www.examplethree.com/",
-]
+WEBSITES = ["https://www.exampleone.com/","https://www.exampletwo.com/","https://www.examplethree.com/",]
 
 os.makedirs('csv-files', exist_ok=True)
 
