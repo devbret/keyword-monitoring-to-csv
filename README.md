@@ -50,7 +50,7 @@ This project repo is intended to demonstrate an ability to do the following:
 
 - Monitor a list of websites for specific keywords
 
-- Crawl internal links on each website, skip PDFs and searches the visible page text for keywords
+- Crawl internal links on each website, skip PDFs and search the visible page text for keywords
 
 - When keywords are found, record the matching URL, detected keywords and timestamp in a CSV file
 
