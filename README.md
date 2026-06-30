@@ -1,12 +1,14 @@
 # Regular Keyword Monitoring With CSV Reporting
 
-Continuously crawl specified websites to detect targeted keywords, log matching URLs and terms to timestamped CSV files and automatically repeat the monitoring process every 60 minutes.
+Continuously crawl specified websites to detect targeted keywords, log matching URLs and terms to timestamped CSV files and automatically repeat the monitoring process at a configurable interval.
 
 ## Application Overview
 
-Recursively crawls each site starting from its homepage, fetches page content using `requests`, parses HTML with `BeautifulSoup` and searches for specific keywords. If any keywords are found on a page, the script records the page URL and matched terms.
+Recursively crawls each site starting from its homepage, following internal links while skipping PDFs, then fetches page content using `requests` and parses the HTML with `BeautifulSoup`. The visible page text is searched for chosen keywords. When a keyword is found on a page, the script records the page URL and the matched terms.
 
-All detected alerts are written to a timestamped CSV file inside a `csv-files` directory, including the URL, keywords found and a timestamp. The script runs immediately on startup and then uses the `schedule` library to automatically repeat the monitoring process every 60 minutes in a continuous loop.
+Detected alerts are written to a timestamped CSV file inside the `csv-files` directory, capturing the URL, keywords found and the time each match was detected. Every run is also recorded and activity is logged, so there is a trail even when nothing matches.
+
+The Python script runs once immediately on startup and then uses the `schedule` library to repeat the monitoring process at a configurable interval in a continuous loop. Keywords, websites and other settings are read from a `.env` file.
 
 ## Basic Setup Instructions
 
@@ -34,9 +36,9 @@ Below are the required software programs and instructions for installing and usi
 
 7. Install the needed dependencies: `pip install -r requirements.txt`
 
-8. Add monitored keywords to line 10 of the `app.py` file
+8. Create your configuration file from the template: `cp .env.template .env`
 
-9. Add monitored domains to line 11 of the `app.py` file
+9. Open `.env` and set values for `KEYWORDS` and `WEBSITES`
 
 10. Run the program: `python3 app.py`
 
