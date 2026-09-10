@@ -1,4 +1,4 @@
-# Regular Keyword Monitoring With CSV Reporting
+# Keyword Monitoring With CSV Reporting
 
 Continuously crawl specified websites to detect targeted keywords, log matching URLs and terms to timestamped CSV files and automatically repeat the monitoring process at a configurable interval.
 
