@@ -145,8 +145,15 @@ def run_monitoring():
     record_run(total_pages, len(all_alerts))
 
 
+def safe_run_monitoring():
+    try:
+        run_monitoring()
+    except Exception:
+        logger.exception("Monitoring run failed. Retrying at the next interval.")
+
+
 def schedule_monitoring():
-    schedule.every(INTERVAL_MINUTES).minutes.do(run_monitoring)
+    schedule.every(INTERVAL_MINUTES).minutes.do(safe_run_monitoring)
     logger.info(f"Monitoring scheduled to run every {INTERVAL_MINUTES} minutes.")
 
 
@@ -163,7 +170,7 @@ if __name__ == "__main__":
         raise SystemExit(1)
 
     logger.info("Initial run of the monitoring system.")
-    run_monitoring()
+    safe_run_monitoring()
     schedule_monitoring()
     while True:
         schedule.run_pending()
